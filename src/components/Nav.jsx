@@ -1,32 +1,64 @@
+import { useState } from "react";
 import logo from "../assets/logo.svg";
 import backgroundImageMoblie from "../assets/mobile/image-header.jpg";
 import backgroundImagePc from "../assets/desktop/image-header.jpg";
+import menuImg from "../assets/icon-hamburger.svg";
 
 export default function Nav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div>
       <div className="bgImg">
         <img
           src={backgroundImageMoblie}
-          className="absolute top-0 left-0"
+          className="absolute top-0 left-0 md:hidden h-screen w-full"
           alt=""
         />
-        <img src="" alt="" />
+        <img
+          src={backgroundImagePc}
+          className="h-screen w-full absolute top-0 left-0"
+          alt=""
+        />
       </div>
-      <nav className="p-[2em] flex items-center justify-between relative">
+      <nav className="py-[2em] px-[3em] flex items-center justify-between relative">
         <div className="logo">
           <img src={logo} alt="Logo" />
         </div>
-        <div className="menuMobile md:hidden text-teal-50 rotate-90 cursor-pointer w-[2em] h-[2em] flex items-center justify-center rounded-full">
-          <b className="">lll</b>
-        </div>
-        <div className="hidden menuShow flex flex-col absolute bg-white w-[20em] h-[10em] bottom-[-200%] left-[50%] translate-x-[-50%] z-50">
-          <div className="triangleshape"></div>
-          <div className="flex flex-col items-center justify-center h-full leading-8">
-            <b className="block">About</b>
-            <b className="block">Services</b>
-            <b className="block">Projects</b>
-            <b className="block">Contact</b>
+        <div className="menulink">
+          <img
+            src={menuImg}
+            className="md:hidden cursor-pointer"
+            alt="Menu Icon"
+            onClick={toggleMenu}
+          />
+          {isMenuOpen && (
+            <div className="menuMobileData absolute bottom-[-250%] left-[50%] translate-x-[-50%] bg-white w-[80%] h-[12em] text-center flex items-center justify-center">
+              <div className="triangleShape md:hidden bg-white w-[2em] h-[2em] absolute right-[0] top-[-8%] rounded-tl-[20em] rounded-br-[2em] rounded-l-[20em] rotate-[225deg]"></div>
+              <ul className="leading-8 text-grayishBlue font-bold">
+                <li className="cursor-pointer">About</li>
+                <li className="cursor-pointer">Services</li>
+                <li className="cursor-pointer">Projects</li>
+                <li className="mt-[1em] md:mt-0 px-[2em] md:py-[0.4em] py-[0.7em] font-semibold rounded-[3em] bg-yellow text-black hover:bg-opacity-40 md:hover:bg-opacity-70 cursor-pointer transition duration-300 ease-in-out font-fraunces tracking-wider md:bg-white">
+                  Contact
+                </li>
+              </ul>
+            </div>
+          )}
+          {/* PC Menu */}
+          <div className="hidden md:flex md:items-center md:justify-between">
+            <ul className="leading-8 text-white font-bold md:flex md:items-center md:justify-center md:gap-[2em]">
+              <li className="cursor-pointer">About</li>
+              <li className="cursor-pointer">Services</li>
+              <li className="cursor-pointer">Projects</li>
+              <li className="px-[2em] py-[0.4em] font-semibold rounded-[3em] text-black hover:bg-opacity-70 cursor-pointer transition duration-300 ease-in-out font-fraunces tracking-wider bg-white">
+                Contact
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
