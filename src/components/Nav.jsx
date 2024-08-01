@@ -1,7 +1,5 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
-import backgroundImageMoblie from "../assets/mobile/image-header.jpg";
-import backgroundImagePc from "../assets/desktop/image-header.jpg";
 import menuImg from "../assets/icon-hamburger.svg";
 
 export default function Nav() {
@@ -13,19 +11,7 @@ export default function Nav() {
 
   return (
     <div>
-      <div className="bgImg">
-        <img
-          src={backgroundImageMoblie}
-          className="absolute top-0 left-0 md:hidden h-screen w-full"
-          alt=""
-        />
-        <img
-          src={backgroundImagePc}
-          className="h-screen w-full absolute top-0 left-0"
-          alt=""
-        />
-      </div>
-      <nav className="py-[2em] px-[3em] flex items-center justify-between relative">
+      <nav className="py-[2em] px-[3em] flex items-center justify-between relative z-10">
         <div className="logo">
           <img src={logo} alt="Logo" />
         </div>
