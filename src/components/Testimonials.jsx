@@ -12,3 +12,4 @@ export default function Testimonials({ image, text, name, title }) {
     </div>
   );
 }
+    
